@@ -25,12 +25,11 @@ func NewFen(fen string) Fen {
 	return Fen{fenString, board, colorToMove, availableCastlings, halfMoveClock, fullMoveClock}
 }
 
-func (f Fen) AddMove(move string) string {
+func (f *Fen) AddMove(move string) {
 	fromIndex, toIndex := parseMove(move)
 	pieceToMove := f.board[fromIndex]
 	f.board[fromIndex] = "."
 	f.board[toIndex] = pieceToMove
 
 	f.fenString = composeBoardArrayToString(f.board) + " " + f.colorToMove + " " + f.availableCastlings + " - " + strconv.Itoa(f.halfMoveClock) + " " + strconv.Itoa(f.fullMoveClock)
-	return f.fenString
 }
