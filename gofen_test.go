@@ -22,8 +22,9 @@ func TestNewFen(t *testing.T) {
 func TestAddMove(t *testing.T) {
 	expected := "rnbqkbnr/pppppppp/8/8/P7/8/.PPPPPPP/RNBQKBNR w KQkq - 0 1"
 	f := NewFen("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1")
+	f.AddMove("a2a4")
 
-	if ret := f.AddMove("a2a4"); ret != expected {
+	if ret := f.fenString; ret != expected {
 		t.Errorf("AddMove() = %q, want %q", ret, expected)
 	}
 }
